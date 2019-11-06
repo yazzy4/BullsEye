@@ -21,17 +21,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Text("Bullseye App")
-                .fontWeight(.semibold)
-            .foregroundColor(Color.green)
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                Text("Hit Me!")
-            }
+    
+    @State var alertIsVisible: Bool = false
+    
+var body: some View {
+    VStack {
+        Text("Bullseye App")
+            .fontWeight(.semibold)
+        .foregroundColor(Color.green)
+        Button(action: {
+            print("button pressed")
+        }) {
+            Text("Hit Me!")
         }
-      
     }
+  
+}
     
 }
 
