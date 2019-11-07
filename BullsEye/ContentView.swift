@@ -31,8 +31,12 @@ var body: some View {
         .foregroundColor(Color.green)
         Button(action: {
             print("button pressed")
+            self.alertIsVisible = true
         }) {
             Text("Hit Me!")
+        }
+        .alert(isPresented: $alertIsVisible) { () -> Alert in
+            return Alert(title: Text("Hello There!"), message: Text("This is my first pop-up"), dismissButton: .default(Text("Dope!")))
         }
     }
   
