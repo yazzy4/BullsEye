@@ -23,20 +23,34 @@ import SwiftUI
 struct ContentView: View {
     
     @State var alertIsVisible: Bool = false
+    @State var knockAlertIsVisible: Bool = false
     
 var body: some View {
     VStack {
-        Text("Bullseye App")
-            .fontWeight(.semibold)
-        .foregroundColor(Color.green)
-        Button(action: {
-            print("button pressed")
-            self.alertIsVisible = true
-        }) {
-            Text("Hit Me!")
+        VStack {
+            Text("Bullseye App")
+                .fontWeight(.semibold)
+            .foregroundColor(Color.green)
+            Button(action: {
+                print("button pressed")
+                self.alertIsVisible = true
+            }) {
+                Text("Hit Me!")
+            }
+            .alert(isPresented: $alertIsVisible) { () -> Alert in
+                return Alert(title: Text("Hello There!"), message: Text("This is my first pop-up"), dismissButton: .default(Text("Dope!")))
+            }
+            
+         
         }
-        .alert(isPresented: $alertIsVisible) { () -> Alert in
-            return Alert(title: Text("Hello There!"), message: Text("This is my first pop-up"), dismissButton: .default(Text("Dope!")))
+        Button(action: {
+            print("knock knock button pressed")
+            self.knockAlertIsVisible = true
+        }) {
+            Text(/*@START_MENU_TOKEN@*/"Knock Knock"/*@END_MENU_TOKEN@*/)
+        }
+        .alert(isPresented: $knockAlertIsVisible) { () -> Alert in
+            return Alert(title: Text("Who's there?"), message: Text("Orange"), dismissButton: .default(Text("Orange Who?")))
         }
     }
   
